@@ -1,0 +1,13 @@
+{
+  "name": "uprm-enrollment-app",
+  "version": "1.0.0",
+  "description": "UPRM Course Enrollment Web App",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "ssh2": "^1.11.0",
+    "ws": "^8.13.0"
+  }
+} 
