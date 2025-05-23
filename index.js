@@ -11,11 +11,25 @@ wss.on('connection', (ws) => {
   const scriptPath = path.join(__dirname, 'login.expect');
   const child = spawn('expect', [scriptPath]);
 
-
 child.stdout.on('data', (data) => {
   const cleanText = stripAnsi(data.toString());
-  console.log("Clean Output:", cleanText);
-  ws.send(cleanText);
+
+  // Look for menu
+  const match = cleanText.match(/MENU PRINCIPAL:(.*?Opcion deseada:)/s);
+  if (match) {
+    const menuBlock = match[1];
+
+    // Split into lines
+    const options = menuBlock
+      .split('\n')
+      .filter(line => /^\s*\d\./.test(line)) // lines that start with numbers
+      .map(line => line.trim());
+
+    ws.send(JSON.stringify({ type: 'menu', options }));
+  } else {
+    // fallback, send raw
+    ws.send(JSON.stringify({ type: 'text', content: cleanText }));
+  }
 });
 
   child.stderr.on('data', (data) => {

@@ -10,21 +10,11 @@
     <div class="container">
         <header>
             <h1>UPRM Course Enrollment</h1>
-            <p id="terminal-output">Connecting...</p>
+            <div id="terminal-output">Connecting...</div>
         </header>
     </div>
 
-    <script>
-      const output = document.getElementById('terminal-output');
-      const ws = new WebSocket('ws://localhost:8080');
+  <script src="app.js"></script>
 
-      ws.onmessage = (event) => {
-        output.textContent += event.data;
-      };
-
-      ws.onerror = () => {
-        output.textContent = "Failed to connect to backend.";
-      };
-    </script>
 </body>
 </html>
