@@ -1,0 +1,8 @@
+#!/usr/bin/expect -f
+
+spawn ssh estudiante@rumad.uprm.edu
+expect "password:"
+send "\r"
+interact
+#expect "Opcion deseada:"
+#send "2\r"

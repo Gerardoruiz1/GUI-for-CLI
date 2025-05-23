@@ -7,7 +7,8 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "ssh2": "^1.11.0",
-    "ws": "^8.13.0"
+    "ssh2": "^1.16.0",
+    "strip-ansi": "^6.0.1",
+    "ws": "^8.18.2"
   }
-} 
+}
